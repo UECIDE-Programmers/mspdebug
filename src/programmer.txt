@@ -1,0 +1,29 @@
+name=mspdebug
+description=MSPDebug
+family=msp430
+
+programmer.method=script
+programmer.script.0=__builtin_bullet::Uploading sketch...
+programmer.script.1.linux_amd64=${programmer:root}/tools/linux64/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
+programmer.script.1.linux_i386=${programmer:root}/tools/linux32/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
+programmer.script.1.windows=${programmer:root}/tools/windows/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
+programmer.script.1.macosx=${programmer:root}/tools/macosx/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
+programmer.script.1=__builtin_error::Sorry, MSPDebug isn't supported on your platform.
+programmer.script.2=__builtin_bullet::All done.
+
+
+prefs.programmers.type=section
+prefs.programmers.name=Programmers
+prefs.programmers.mspdebug.type=section
+prefs.programmers.mspdebug.name=MSPDebug
+
+prefs.programmers.mspdebug.verbose.name=Verbosity
+prefs.programmers.mspdebug.verbose.type=dropdown
+prefs.programmers.mspdebug.verbose.options.low=Low
+prefs.programmers.mspdebug.verbose.options.high=High
+prefs.programmers.mspdebug.verbose.default=low
+
+# These map the option selected above to a set of flags through variable expansion
+programmer.verbose.low=-q
+programmer.verbose.high=
+

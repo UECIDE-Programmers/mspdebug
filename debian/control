@@ -1,0 +1,16 @@
+Source: mspdebug
+Section: programmers
+XBSC-Family: avr
+Priority: extra
+Maintainer: Matt Jenkins <matt@majenko.co.uk>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: mspdebug
+Section: programmers
+Architecture: all
+XBSC-Group: MSP430
+Description: MSPDebug
+ This is the programmer used for MSP430 chips from Texas Instruments
+
+
