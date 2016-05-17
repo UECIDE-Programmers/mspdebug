@@ -4,6 +4,11 @@ family=msp430
 
 programmer.method=script
 programmer.script.0=__builtin_bullet::Uploading sketch...
+
+programmer.script.1.linux_amd64.environment=LD_LIBRARY_PATH=${programmer:root}/tools/linux64
+programmer.script.1.linux_i386.environment=LD_LIBRARY_PATH=${programmer:root}/tools/linux32
+programmer.script.1.maxosx.environment=LD_LIBRARY_PATH=${programmer:root}/tools/macosx
+
 programmer.script.1.linux_amd64=${programmer:root}/tools/linux64/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
 programmer.script.1.linux_i386=${programmer:root}/tools/linux32/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
 programmer.script.1.windows=${programmer:root}/tools/windows/mspdebug::${programmer.verbose.${prefs:programmers.mspdebug.verbose}}::${upload.protocol}::--force-reset::${verbose}::prog ${build.path}/${filename}.hex
@@ -26,4 +31,21 @@ prefs.programmers.mspdebug.verbose.default=low
 # These map the option selected above to a set of flags through variable expansion
 programmer.verbose.low=-q
 programmer.verbose.high=
+
+tool.fwupdate.name=Update Programmer Firmware
+tool.fwupdate.script.0=__builtin_bullet::Updating firmware
+tool.fwupdate.script.1=__builtin_bullet2::This may take a whie...
+
+tool.fwupdate.script.2.linux_amd64.environment=LD_LIBRARY_PATH=${programmer:root}/tools/linux64
+tool.fwupdate.script.2.linux_amd64=${programmer:root}/tools/linux64/mspdebug::tilib::--allow-fw-update::exit
+
+tool.fwupdate.script.2.linux_i386.environment=LD_LIBRARY_PATH=${programmer:root}/tools/linux32
+tool.fwupdate.script.2.linux_i386=${programmer:root}/tools/linux32/mspdebug::tilib::--allow-fw-update::exit
+
+tool.fwupdate.script.2.macosx.environment=LD_LIBRARY_PATH=${programmer:root}/tools/macosx
+tool.fwupdate.script.2.macosx=${programmer:root}/tools/macosx/mspdebug::tilib::--allow-fw-update::exit
+
+tool.fwupdate.script.2.windows=${programmer:root}/tools/windows/mspdebug::tilib::--allow-fw-update::exit
+
+tool.fwupdate.script.3=__builtin_bullet2::Done.
 

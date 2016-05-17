@@ -1,2 +1,2 @@
-src/tools programmers/msp430
-src/programmer.txt programmers/msp430
+src/tools programmers/mspdebug
+src/programmer.txt programmers/mspdebug
